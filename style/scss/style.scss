@@ -1,0 +1,194 @@
+// variable
+$primary-color: #24ccff;
+$secondary-color: #fff;
+
+// import-font
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lemonada:wght@500&family=Lobster&display=swap");
+
+// mixin for title
+@mixin transform {
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+@mixin title($font-size) {
+  font-family: "Lobster", cursive;
+  font-size: $font-size;
+  color: $secondary-color;
+  padding: 20px;
+}
+@mixin sub_title {
+  text-transform: uppercase;
+  padding: 20px;
+}
+@mixin middle {
+  position: absolute;
+  left: 50%;
+  top: 50px;
+  transform: translate(-50%, -50%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-image: url("../../image/pexels-luck-galindo-544268.jpg");
+  height: 60px;
+  .logo {
+    font-family: "Lobster", cursive;
+    font-size: 40px;
+    text-decoration: none;
+    display: inline-block;
+    @include transform;
+  }
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .menu {
+    li {
+      text-decoration: none;
+      display: inline-block;
+      margin: 15px 10px;
+      padding: 10px;
+      font-family: "Lemonada", cursive;
+      font-size: 20px;
+      a {
+        color: $primary-color;
+
+        &:hover {
+          color: rgb(33, 33, 158);
+          @include transform;
+        }
+      }
+    }
+  }
+}
+//  mian content
+
+.main-content {
+  background-image: url("../../image/landscape-5356009_1920.jpg");
+  height: 100vh;
+  background-size: cover;
+  background-position: 100% 100%;
+  position: relative;
+  .main-content-wrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    color: rgb(212, 209, 19);
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    h1 {
+      @include title(100px);
+    }
+    h4 {
+      @include sub_title;
+    }
+  }
+}
+//  portfoli
+.portfolio-section {
+  .portfolio-title {
+    h1 {
+      color: $primary-color !important;
+      @include title(40px);
+    }
+    h5 {
+      @include sub_title;
+    }
+  }
+}
+
+.portfolio-content {
+  img {
+    width: 300px;
+    height: 250px;
+  }
+  .portfolio-upper {
+    padding: 20px;
+  }
+  .portfolio-lower {
+    padding: 20px;
+  }
+  .overlay-relative {
+    position: relative;
+    overflow: hidden;
+    &:hover .over-lay {
+      top: 0;
+    }
+  }
+  .over-lay {
+    position: absolute;
+    background-color: #281818c4;
+    left: 15px;
+    top: -100%;
+    width: 82%;
+    height: 100%;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    p {
+      color: $secondary-color;
+      padding: 30px;
+      padding-top: 40px;
+      padding-right: 40px;
+    }
+  }
+}
+
+// content-section
+
+.content-section {
+  background-color: #0d0000cc;
+  height: 100px;
+  position: relative;
+  button {
+    box-sizing: border-box;
+    background-color: transparent;
+    border: 1px solid $primary-color;
+    color: $primary-color;
+    padding: 10px 20px;
+    background-position: 100% 100%;
+    position: relative;
+    @include middle;
+
+    &:hover::after {
+      transform: scaleX(1);
+      -webkit-transform: scaleX(1);
+      -moz-transform: scaleX(1);
+      -ms-transform: scaleX(1);
+      -o-transform: scaleX(1);
+    }
+    &::after {
+      content: "";
+      background-color: $secondary-color;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      transform: scaleX(0);
+      -webkit-transform: scaleX(0);
+      -moz-transform: scaleX(0);
+      -ms-transform: scaleX(0);
+      -o-transform: scaleX(0);
+
+      transform-origin: (0 0);
+      @include transform;
+    }
+  }
+}
